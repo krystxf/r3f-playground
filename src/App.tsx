@@ -1,27 +1,14 @@
-import { Canvas } from "@react-three/fiber";
-import {
-  GizmoHelper,
-  GizmoViewport,
-  Environment,
-  OrbitControls,
-} from "@react-three/drei";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { IngenuityPage } from "@/pages/ingenuity";
 
 const App = () => {
   return (
-    <Canvas>
-      <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color="orange" />
-      </mesh>
-
-      <Environment preset="sunset" />
-
-      <OrbitControls />
-
-      <GizmoHelper>
-        <GizmoViewport />
-      </GizmoHelper>
-    </Canvas>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/ingenuity" Component={IngenuityPage} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

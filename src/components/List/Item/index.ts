@@ -1,3 +1,3 @@
-export { ListItem } from "./Item";
-export { ListItemLabel } from "./Label";
-export { ListItemValue } from "./Value";
+export { ListItem } from "@/components/List/Item/Item";
+export { ListItemLabel } from "@/components/List/Item/Label";
+export { ListItemValue } from "@/components/List/Item/Value";

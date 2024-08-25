@@ -1,6 +1,7 @@
 import { Environment, GizmoHelper, GizmoViewport } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Grid, OrbitControls } from "../../r3f";
+
+import { Grid, OrbitControls } from "@/components/r3f";
 
 type Props = {
   children: React.ReactNode;

@@ -1,1 +1,1 @@
-export { Outlined } from "./Outlined";
+export { Outlined } from "@/components/Outlined/Outlined";

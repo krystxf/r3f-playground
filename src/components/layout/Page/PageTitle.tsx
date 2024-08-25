@@ -1,4 +1,4 @@
-import { Outlined, type OutlinedProps } from "../../Outlined/Outlined";
+import { Outlined, type OutlinedProps } from "@/components/Outlined/Outlined";
 
 type Props = OutlinedProps;
 

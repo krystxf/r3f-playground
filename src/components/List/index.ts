@@ -1,5 +1,5 @@
-import { List as ListElement } from "./List";
-import { ListItem, ListItemLabel, ListItemValue } from "./Item";
+import { List as ListElement } from "@/components/List/List";
+import { ListItem, ListItemLabel, ListItemValue } from "@/components/List/Item";
 
 export const List = Object.assign(ListElement, {
   Item: Object.assign(ListItem, {
