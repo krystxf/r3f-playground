@@ -4,9 +4,10 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import { PageLayout } from "@/components/layout/Page";
 import { Stats } from "@/pages/ingenuity/components/Stats";
+import { assets } from "@/utils";
 
 export const IngenuityPage = () => {
-  const model = useLoader(GLTFLoader, "/ingenuity.glb");
+  const model = useLoader(GLTFLoader, assets.ingenuity);
 
   return (
     <>

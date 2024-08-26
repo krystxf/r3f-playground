@@ -2,12 +2,14 @@ import React, { forwardRef } from "react";
 
 type Props = {
   strokeColor?: string;
+  strokeWidth?: string;
 } & React.HTMLAttributes<HTMLSpanElement>;
 
 export const Outlined = forwardRef<HTMLSpanElement, Props>((props, ref) => {
   const {
     children,
     strokeColor = "black",
+    strokeWidth = "1px",
     style,
     className = "",
     ...otherProps
@@ -17,7 +19,7 @@ export const Outlined = forwardRef<HTMLSpanElement, Props>((props, ref) => {
     <span
       ref={ref}
       style={{
-        WebkitTextStroke: `1px ${strokeColor}`,
+        WebkitTextStroke: `${strokeWidth} ${strokeColor}`,
         ...style,
       }}
       className={`text-transparent ${className}`}
