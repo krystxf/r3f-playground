@@ -6,6 +6,7 @@ import { assets } from "@/utils";
 import { PageLayout } from "@/components/layout/Page";
 import { Stats } from "@/pages/ingenuity/components/Stats";
 import { detailByPart } from "@/pages/ingenuity/part-details.const";
+import { Tooltip } from "@/components/Tooltip/Tooltip";
 
 export const IngenuityPage = () => {
   const model = useLoader(GLTFLoader, assets.ingenuity);
@@ -22,9 +23,21 @@ export const IngenuityPage = () => {
         <primitive object={model.scene} />
         {details.map((detail) => (
           <Html position={detail.position}>
-            <div className="relative flex h-4 w-4 hover:scale-125 hover:bg-slate-800/20 active:scale-95 hover:backdrop-blur-lg rounded-full transition-all -translate-x-1/2 -translate-y-1/2">
-              <div className="w-full h-full rounded-full border-white/80 border-2"></div>
-            </div>
+            <Tooltip
+              sideOffset={10}
+              side="right"
+              style={{
+                fontFamily: "'Noto Mono', monospace",
+              }}
+              className="text-white px-4 py-2 rounded-lg backdrop-blur bg-zinc-800/10"
+              trigger={
+                <div className="relative flex h-4 w-4 hover:scale-125 hover:bg-slate-800/20 active:scale-95 hover:backdrop-blur-lg rounded-full transition-all -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-full h-full rounded-full border-white/80 border-2"></div>
+                </div>
+              }
+            >
+              {detail.label}
+            </Tooltip>
           </Html>
         ))}
 
