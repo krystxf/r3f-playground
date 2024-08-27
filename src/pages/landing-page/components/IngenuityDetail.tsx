@@ -7,28 +7,37 @@ import {
 } from "@react-three/drei";
 
 import { assets } from "@/utils";
+import { Suspense } from "react";
 
 export const IngenuityDetail = () => {
-  const ingenuity = useLoader(GLTFLoader, assets.ingenuity);
+  const ingenuity = useLoader(GLTFLoader, assets.ingenuity.base);
 
   return (
     <Canvas className="bg-transparent aspect-square">
-      <Environment preset="sunset" />
+      <Suspense>
+        <Environment preset="sunset" />
+      </Suspense>
+
       <PerspectiveCamera
         makeDefault
         position={[10, 8, 0]}
         fov={60}
         zoom={0.75}
       />
-      <OrbitControls
-        autoRotate
-        autoRotateSpeed={-2}
-        enableRotate={false}
-        enablePan={false}
-        enableZoom={false}
-      />
 
-      <primitive object={ingenuity.scene} />
+      <Suspense>
+        <OrbitControls
+          autoRotate
+          autoRotateSpeed={-2}
+          enableRotate={false}
+          enablePan={false}
+          enableZoom={false}
+        />
+      </Suspense>
+
+      <Suspense>
+        <primitive object={ingenuity.scene} />
+      </Suspense>
     </Canvas>
   );
 };

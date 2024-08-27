@@ -1,56 +1,48 @@
-import { Html } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { Suspense } from "react";
+import { Environment, Html, PerspectiveCamera } from "@react-three/drei";
 
-import { assets } from "@/utils";
 import { PageLayout } from "@/components/layout/Page";
-import { Stats } from "@/pages/ingenuity/components/Stats";
-import { detailByPart } from "@/pages/ingenuity/part-details.const";
-import { Tooltip } from "@/components/Tooltip/Tooltip";
+import {
+  IngenuityInfoPoints,
+  Model,
+  ModelPlaceholder,
+  Stats,
+} from "@/pages/ingenuity/components";
 
 export const IngenuityPage = () => {
-  const model = useLoader(GLTFLoader, assets.ingenuity);
-
-  const details = Object.entries(detailByPart).map(([key, value]) => ({
-    key,
-    position: model.nodes[key].position,
-    ...value,
-  }));
-
   return (
     <>
-      <PageLayout.Canvas>
-        <primitive object={model.scene} />
-        {details.map((detail) => (
-          <Html position={detail.position}>
-            <Tooltip
-              sideOffset={10}
-              side="right"
-              style={{
-                fontFamily: "'Noto Mono', monospace",
-              }}
-              className="text-white px-4 py-2 rounded-lg backdrop-blur bg-zinc-800/10"
-              trigger={
-                <div className="relative flex h-4 w-4 hover:scale-125 hover:bg-slate-800/20 active:scale-95 hover:backdrop-blur-lg rounded-full transition-all -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-full h-full rounded-full border-white/80 border-2"></div>
-                </div>
-              }
+      <div className="absolute top-0 left-0 h-screen w-full bg-black" />
+      <Suspense>
+        <PageLayout.Canvas>
+          <PerspectiveCamera
+            makeDefault
+            position={[10, 8, 10]}
+            rotation={[0, Math.PI / 2, 0]}
+            fov={60}
+          />
+
+          <Suspense>
+            <IngenuityInfoPoints />
+          </Suspense>
+          <Suspense fallback={<ModelPlaceholder />}>
+            <Model />
+
+            <Environment preset="sunset" />
+          </Suspense>
+
+          <Suspense>
+            <Html
+              occlude="blending"
+              transform
+              rotation-x={-Math.PI / 2}
+              position={[8, 0.01, 0]}
             >
-              {detail.label}
-            </Tooltip>
-          </Html>
-        ))}
-
-        <Html
-          occlude="blending"
-          transform
-          rotation-x={-Math.PI / 2}
-          position={[8, 0.01, 0]}
-        >
-          <Stats />
-        </Html>
-      </PageLayout.Canvas>
-
+              <Stats />
+            </Html>
+          </Suspense>
+        </PageLayout.Canvas>
+      </Suspense>
       <PageLayout.Title>Ingenuity</PageLayout.Title>
     </>
   );

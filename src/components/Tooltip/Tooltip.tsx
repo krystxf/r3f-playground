@@ -11,7 +11,7 @@ export const Tooltip = (props: Props) => {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
-        <RadixTooltip.Trigger asChild>{trigger}</RadixTooltip.Trigger>
+        <RadixTooltip.Trigger>{trigger}</RadixTooltip.Trigger>
 
         <RadixTooltip.Portal>
           <RadixTooltip.Content {...otherProps}>

@@ -1,37 +1,30 @@
-import { Environment, GizmoHelper, GizmoViewport } from "@react-three/drei";
+import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import { Grid, OrbitControls } from "@/components/r3f";
-import { useState } from "react";
 
 type Props = {
   children: React.ReactNode;
-  showAxes?: boolean;
 };
 
 export const PageCanvas = (props: Props) => {
-  const { children, showAxes = false } = props;
-
-  // TODO: add controls
-  const [autoRotate] = useState<boolean>(true);
+  const { children } = props;
 
   return (
-    <Canvas
-      style={{
-        background: "#101010",
-      }}
-    >
-      <Grid />
-      <OrbitControls autoRotate={autoRotate} />
-      <Environment preset="sunset" />
+    <Canvas className="w-full h-full bg-[#101010]" shadows>
+      <Suspense>
+        <Grid />
+      </Suspense>
+      <Suspense>
+        <OrbitControls
+          makeDefault
+          autoRotate
+          maxDistance={40}
+          minDistance={5}
+        />
+      </Suspense>
 
       {children}
-
-      {showAxes && (
-        <GizmoHelper>
-          <GizmoViewport />
-        </GizmoHelper>
-      )}
     </Canvas>
   );
 };

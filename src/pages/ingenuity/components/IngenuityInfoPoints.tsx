@@ -1,12 +1,7 @@
-type DetailByPart = Record<
-  `info_${string}`,
-  {
-    label: string;
-    description: string;
-  }
->;
+import { InfoPoints } from "@/components/r3f";
+import { assets } from "@/utils";
 
-export const detailByPart = {
+const infoPointsData = {
   info_blade: {
     label: "Blades",
     description:
@@ -30,4 +25,13 @@ export const detailByPart = {
     description:
       "Radio antennas talk to Earth via the Mars 2020 rover and the Mars orbiters.",
   },
-} satisfies DetailByPart;
+};
+
+export const IngenuityInfoPoints = () => {
+  return (
+    <InfoPoints
+      infoPoints={infoPointsData}
+      modelUrl={assets.ingenuity.info_points}
+    />
+  );
+};
