@@ -9,16 +9,12 @@ export const Tooltip = (props: Props) => {
   const { trigger, children, ...otherProps } = props;
 
   return (
-    <RadixTooltip.Provider>
-      <RadixTooltip.Root>
-        <RadixTooltip.Trigger>{trigger}</RadixTooltip.Trigger>
+    <RadixTooltip.Root delayDuration={0}>
+      <RadixTooltip.Trigger>{trigger}</RadixTooltip.Trigger>
 
-        <RadixTooltip.Portal>
-          <RadixTooltip.Content {...otherProps}>
-            {children}
-          </RadixTooltip.Content>
-        </RadixTooltip.Portal>
-      </RadixTooltip.Root>
-    </RadixTooltip.Provider>
+      <RadixTooltip.Portal>
+        <RadixTooltip.Content {...otherProps}>{children}</RadixTooltip.Content>
+      </RadixTooltip.Portal>
+    </RadixTooltip.Root>
   );
 };
