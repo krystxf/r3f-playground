@@ -34,7 +34,7 @@ export default function RootLayout({
                 <UiComponentSlot
                     asChild
                     variant="sm"
-                    className="absolute bottom-8 right-6 z-50 hover:text-neutral-300 hover:underline"
+                    className="absolute bottom-2 right-2 z-50 hover:text-neutral-300 hover:underline"
                 >
                     <Link href="https://github.com/krystxf/r3f-playground">
                         source code

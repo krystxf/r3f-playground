@@ -1,19 +1,8 @@
-"use client";
+import type { Metadata } from "next";
 
-import { assets } from "@/utils/assets";
-import { infopoints } from "@/constants/infopoints";
-import { Canvas } from "@/components/react-three-fiber/Canvas";
-import { ModelWithInfopoints } from "@/components/react-three-fiber/ModelWithInfopoints";
+export const metadata: Metadata = {
+    title: "Ingenuity | Three.js",
+    description: "Ingenuity helicopter on Mars",
+};
 
-export default function IngenuityPage() {
-    return (
-        <div className="absolute left-0 top-0 z-0 h-screen w-full">
-            <Canvas>
-                <ModelWithInfopoints
-                    modelPath={assets.ingenuity}
-                    infopoints={infopoints.ingenuity}
-                />
-            </Canvas>
-        </div>
-    );
-}
+export { IngenuityPageCanvas as default } from "@/app/ingenuity/canvas";

@@ -20,7 +20,7 @@ export const UiComponentSlot = (props: Props) => {
         ...otherProps
     } = props;
     const Component = asChild ? Slot : asComponent;
-    const isButton = !asChild && asComponent === "button";
+    const isButton = asComponent === "button";
 
     return (
         <Component

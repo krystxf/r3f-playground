@@ -5,10 +5,11 @@ import { Grid, OrbitControls } from "@/components/react-three-fiber";
 
 type Props = {
     children: ReactNode;
+    camera?: ReactNode;
 };
 
 export const Canvas = (props: Props) => {
-    const { children } = props;
+    const { children, camera } = props;
 
     return (
         <ReactThreeCanvas className="h-full w-full" shadows>
@@ -18,13 +19,14 @@ export const Canvas = (props: Props) => {
                 <Environment preset="sunset" />
             </Suspense>
 
-            <PerspectiveCamera
-                makeDefault
-                position={[10, 8, 10]}
-                rotation={[0, Math.PI / 2, 0]}
-                fov={60}
-            />
-
+            {camera ?? (
+                <PerspectiveCamera
+                    makeDefault
+                    position={[10, 8, 10]}
+                    rotation={[0, Math.PI / 2, 0]}
+                    fov={60}
+                />
+            )}
             <OrbitControls
                 makeDefault
                 autoRotate
