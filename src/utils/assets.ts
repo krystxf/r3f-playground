@@ -1,3 +1,3 @@
 export const assets = {
-  ingenuity: "/assets/ingenuity/ingenuity.glb",
+    ingenuity: "/assets/ingenuity/ingenuity.glb",
 };

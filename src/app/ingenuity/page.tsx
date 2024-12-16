@@ -6,14 +6,14 @@ import { Canvas } from "@/components/react-three-fiber/Canvas";
 import { ModelWithInfopoints } from "@/components/react-three-fiber/ModelWithInfopoints";
 
 export default function IngenuityPage() {
-  return (
-    <div className="w-full h-screen absolute top-0 left-0 z-0">
-      <Canvas>
-        <ModelWithInfopoints
-          modelPath={assets.ingenuity}
-          infopoints={infopoints.ingenuity}
-        />
-      </Canvas>
-    </div>
-  );
+    return (
+        <div className="absolute left-0 top-0 z-0 h-screen w-full">
+            <Canvas>
+                <ModelWithInfopoints
+                    modelPath={assets.ingenuity}
+                    infopoints={infopoints.ingenuity}
+                />
+            </Canvas>
+        </div>
+    );
 }

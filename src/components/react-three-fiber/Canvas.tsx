@@ -4,39 +4,35 @@ import { Suspense, type ReactNode } from "react";
 import { Grid, OrbitControls } from "@/components/react-three-fiber";
 
 type Props = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 export const Canvas = (props: Props) => {
-  const { children } = props;
+    const { children } = props;
 
-  return (
-    <ReactThreeCanvas className="w-full h-full" shadows>
-      <Suspense>
-        <Grid />
-      </Suspense>
+    return (
+        <ReactThreeCanvas className="h-full w-full" shadows>
+            <Grid />
 
-      <Suspense>
-        <Environment preset="sunset" />
-      </Suspense>
+            <Suspense>
+                <Environment preset="sunset" />
+            </Suspense>
 
-      <PerspectiveCamera
-        makeDefault
-        position={[10, 8, 10]}
-        rotation={[0, Math.PI / 2, 0]}
-        fov={60}
-      />
+            <PerspectiveCamera
+                makeDefault
+                position={[10, 8, 10]}
+                rotation={[0, Math.PI / 2, 0]}
+                fov={60}
+            />
 
-      <Suspense>
-        <OrbitControls
-          makeDefault
-          autoRotate
-          maxDistance={40}
-          minDistance={5}
-        />
-      </Suspense>
+            <OrbitControls
+                makeDefault
+                autoRotate
+                maxDistance={40}
+                minDistance={5}
+            />
 
-      {children}
-    </ReactThreeCanvas>
-  );
+            {children}
+        </ReactThreeCanvas>
+    );
 };
